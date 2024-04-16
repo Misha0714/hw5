@@ -59,10 +59,12 @@ bool scheduleHelper(const AvailabilityMatrix& avail, size_t day, size_t dailyNee
     size_t numDays = avail.size();
 
     // Base case: all days scheduled
-    if (day == numDays) return true;
+    if (day == numDays) {
+			return true;
+		}
 
-    // Try assigning workers for the current day
-    for (size_t worker = 0; worker < numWorkers; ++worker) {
+    //Try assigning workers for the current day
+    for(size_t worker = 0; worker < numWorkers; ++worker) {
         //if the worker is not used and it is valid to scheudule them for day 
         if (workerShifts[worker] < maxShifts && isValid(avail, sched, day, worker, dailyNeed, maxShifts)) {
             // Then Assign the worker
